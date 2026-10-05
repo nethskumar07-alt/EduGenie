@@ -1,0 +1,13 @@
+services:
+  edugenie:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: edugenie-app
+    ports:
+      - "8000:8000"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - GEMINI_MODEL=${GEMINI_MODEL:-gemini-2.5-flash}
+      - PORT=8000
+    restart: unless-stopped
